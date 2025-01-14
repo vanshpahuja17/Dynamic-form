@@ -9,16 +9,14 @@ function CartList() {
     let newValue = parseInt(event.target.value, 10);
     if (isNaN(newValue)) {
       newValue = 1;
-    } else if (newValue > 100) {
-      newValue /= 10;
+    } 
+    else if (newValue > 100) {
+      newValue = Math.floor(newValue/10);
     }
-    const updatedProductList = productList.map((product, index) => {
-      console.log(index) //0,1,2....
-      if (index == i) {
-        return { ...product, quantity: newValue };
-      }
-      return product;
-    });
+    
+    let updatedProductList = [...productList]
+    updatedProductList[i].quantity = newValue
+
     setProductList(updatedProductList);
   };
 
