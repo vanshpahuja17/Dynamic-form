@@ -24,8 +24,9 @@ function CartList() {
 
   const deleteProduct = (i) => {
     let vansh = [...productList]
-    let index  = vansh.indexOf(i)
-    vansh.splice(index,1)
+    // let index  = vansh.indexOf(i)
+    // console.log(index)
+    vansh.splice(i,1)
     setProductList(vansh);
   };
   return (
