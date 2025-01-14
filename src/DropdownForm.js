@@ -39,64 +39,24 @@ const DropdownForm = () => {
     return (selectedInputTypes.length === 0 || showForm) ? true : false;
   };
 
-  // return (
-  //   <div>
-  //     <button onClick={toggleDropdown}>
-  //       {isDropDownOpen ? 'Close Dropdown' : 'Open Dropdown'}
-  //     </button>
-
-  //     {isDropDownOpen && (
-  //       <div className="dropdown">
-  //         {inputTypes.map((inputType) => (
-  //           <div key={inputType.value}>
-  //             <input
-  //               type="checkbox"
-  //               id={inputType.value}
-  //               value={inputType.value}
-  //               checked={selectedInputTypes.includes(inputType.value)}
-  //               onChange={() => handleOptionChange(inputType.value)}
-  //             />
-  //             <label htmlFor={inputType.value}>{inputType.label}</label>
-  //           </div>
-  //         ))}
-  //         <button onClick={handleSubmit} disabled={handleBtnState()}>
-  //           Submit
-  //         </button>
-  //       </div>
-  //     )}
-
-  //     {showForm && (
-  //       <form>
-  //         {selectedInputTypes.map((inputType) => (
-  //           <div key={inputType}>
-  //             <label>{inputType}</label>
-  //             <input type={inputType} />
-  //           </div>
-  //         ))}
-  //       </form>
-  //     )}
-  //   </div>
-  // );
-
   return (
     <div>
       <button onClick={toggleDropdown}>
-        {isDropDownOpen ? "close" : "open"}
+        {isDropDownOpen ? 'Close Dropdown' : 'Open Dropdown'}
       </button>
+
       {isDropDownOpen && (
-        <div>
-          {inputTypes.map((item) => (
-            <div key={item.value}>
+        <div className="dropdown">
+          {inputTypes.map((inputType) => (
+            <div key={inputType.value}>
               <input
                 type="checkbox"
-                value={item.value}
-                checked={selectedInputTypes.includes(item.value)}
-                id={item.value}
-                onChange={() => {
-                  handleOptionChange(item.value);
-                }}
+                id={inputType.value}
+                value={inputType.value}
+                checked={selectedInputTypes.includes(inputType.value)}
+                onChange={() => handleOptionChange(inputType.value)}
               />
-              <label>{item.label}</label>
+              <label htmlFor={inputType.value}>{inputType.label}</label>
             </div>
           ))}
           <button onClick={handleSubmit} disabled={handleBtnState()}>
@@ -104,18 +64,21 @@ const DropdownForm = () => {
           </button>
         </div>
       )}
+
       {showForm && (
-        <div>
-          {selectedInputTypes.map((item)=>(
-            <div>
-              <label>{item}</label>
-              <input type={item}/>
+        <form>
+          {selectedInputTypes.map((inputType) => (
+            <div key={inputType}>
+              <label>{inputType}</label>
+              <input type={inputType} />
             </div>
           ))}
-        </div>
+        </form>
       )}
     </div>
   );
+
+
 };
 
 export default DropdownForm;
